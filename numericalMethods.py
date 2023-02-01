@@ -1,22 +1,22 @@
 import math
-import typing
+from typing import NoReturn
 
 
 class NumericalMethod:
-    def __init__(self, a: float, b: float, e: float) -> typing.NoReturn:
+    def __init__(self, a: float, b: float, e: float) -> NoReturn:
         self.__a = a
         self.__b = b
         self.__e = e
 
-    def getF1(self, x) -> float:
-        return math.log(x) + (x ** 2) - 8
+    def getF1(self, x: int | float) -> float:
+        return math.log(x) + math.pow(x, 2) - 8
 
-    def getF2(self, x) -> float:
+    def getF2(self, x: int | float) -> float:
         # return 1 / ((2 * x) * (math.sqrt(8 - math.log(x))))
         return 1 / (2 * x * math.sqrt(8 - math.log(x)))
 
-    def dehotomia(self):
-        x0 = 0
+    def dehotomia(self) -> float:
+        x0: int = 0
         a = self.__a
         b = self.__b
         e = self.__e
@@ -32,8 +32,8 @@ class NumericalMethod:
         return x0
 
     def iteration(self) -> float:
-        x1 = 0
-        x0 = (self.__a + self.__b) / 2
+        x1: int = 0
+        x0: float = (self.__a + self.__b) / 2
 
         while (abs(x1 - x0)) > self.__e:
             x0 = x1
